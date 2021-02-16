@@ -1,0 +1,14 @@
+
+
+.gameDisplay {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    column-gap: 5px;
+    row-gap: 5px;
+}
+
+.gameDisplay > .square {
+    border: black solid 2px;
+    border-radius: 5px;
+}
