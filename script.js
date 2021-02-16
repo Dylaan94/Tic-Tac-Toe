@@ -25,10 +25,6 @@ const gameBoard = (() => {
         return gameBoardArr;
     }
 
-    let selection = () => {
-
-    }
-
     // make values available to other modules
     // call as function ();
     return {
@@ -44,34 +40,37 @@ const displayController = (() => {
     console.log(gameBoardArr);
 
     // checks if div has been clicked 
-
         gameBoardArr.forEach(gameBoardArr => {
             gameBoardArr.addEventListener("click", () => {
-                let index = gameBoardArr.id;
-                console.log("clicked " + index)
                 gameBoardArr.innerHTML = "X"
                 checked = gameBoardArr.id;
                 console.log(checked)
-                checkFunc()
-            })
+             //   players.player1.selection.push(checked)
+                // check updated array
+                console.log(players.player1)
+                addToSelection(checked)
+                return checked;
+                
+            })   
             
         })
 
-        let checkFunc = () => {
-            return checked;
-        }
 
-        let testFunc = () => {
-            return "hello"
-        }
+        let addToSelection = () => {
+            console.log("add to selection launched")
 
+            for (let i = 0; i < players.player1.selection.length; i ++) {
+                if (players.player1.selection[i] == undefined) {
+                    players.player1.selection.push(checked);
+                    console.log(players.player1)
+                } 
+                
+            }
+        }
     return {
-        checkFunc,
-        testFunc
+
     }
 })();
-
-
 
 const players = (() => {
     let player1 =  {
@@ -95,7 +94,6 @@ return {
 
 })();
 
-const test = '';
 
 
 const playGame = () => {
