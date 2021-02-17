@@ -48,29 +48,49 @@ const displayController = (() => {
              //   players.player1.selection.push(checked)
                 // check updated array
                 console.log(players.player1)
+                console.log(players.player2)
                 addToSelection(checked)
                 return checked;
-                
             })   
-            
         })
 
 
         let addToSelection = () => {
-            console.log("add to selection launched")
+           console.log("add to selection launched")
+           console.log(checked)
 
-            for (let i = 0; i < players.player1.selection.length; i ++) {
-                if (players.player1.selection[i] == undefined) {
-                    players.player1.selection.push(checked);
-                    console.log(players.player1)
-                } 
-                
-            }
+           for (let i = 0; i < 5; i++) {
+               if (players.player1.selection[i] == undefined){
+                   players.player1.selection.push(checked)
+                   return
+               } else if (players.player1.selection[i] !== undefined && i+1 == undefined){
+                   players.player1.selection.push(checked)
+               } else if (players.player1.selection[i] !== undefined 
+                && players.player2.selection[i] == undefined) {
+                    players.player2.selection.push(checked);
+                    return
+               } else if (players.player1.selection[i] !== undefined 
+                && players.player1.selection[i+1] !== undefined 
+                && players.player2.selection[i] == !undefined 
+                && players.player2.selection[i+1] == undefined) {
+                    players.player2.selection.push(checked);
+                }
+           }
+
+
+
+
+            console.log(players.player1)
+            console.log(players.player2)
+
+            
         }
     return {
 
     }
 })();
+
+
 
 const players = (() => {
     let player1 =  {
