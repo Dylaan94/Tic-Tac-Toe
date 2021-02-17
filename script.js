@@ -13,7 +13,7 @@ const gameBoard = (() => {
         newDiv = document.createElement("div");    
         newDiv.className = "square";
         newDiv.id = i;
-        newDiv.innerHTML = "O"
+        newDiv.innerHTML = "";
         gameBoardArr.push(newDiv);
         gameDisplay.appendChild(newDiv);
     }
@@ -34,6 +34,18 @@ const gameBoard = (() => {
 })();
 
 const displayController = (() => {
+
+    let winningCombination = [
+        ["0","1","2"],
+        ["3","4","5"],
+        ["6","7","8"],
+        ["0","3","6"],
+        ["1","4","7"],
+        ["2","5","8"],
+        ["0","4","8"],
+        ["2","4","6"]
+    ]
+
     let gameBoardArr = gameBoard.getGameDisplay();
     let checked;
     console.log(gameBoard.getGameDisplay());
@@ -42,11 +54,7 @@ const displayController = (() => {
     // checks if div has been clicked 
         gameBoardArr.forEach(gameBoardArr => {
             gameBoardArr.addEventListener("click", () => {
-                gameBoardArr.innerHTML = "X"
                 checked = gameBoardArr.id;
-                console.log(checked)
-             //   players.player1.selection.push(checked)
-                // check updated array
                 console.log(players.player1)
                 console.log(players.player2)
                 addToSelection(checked)
@@ -59,32 +67,92 @@ const displayController = (() => {
            console.log("add to selection launched")
            console.log(checked)
 
+           // checks if part of the array has been filled, adds if not
+           // there must be a simpler way to do this??
+
            for (let i = 0; i < 5; i++) {
                if (players.player1.selection[i] == undefined){
                    players.player1.selection.push(checked)
-                   return
-               } else if (players.player1.selection[i] !== undefined && i+1 == undefined){
-                   players.player1.selection.push(checked)
-               } else if (players.player1.selection[i] !== undefined 
-                && players.player2.selection[i] == undefined) {
+                   gameBoardArr[checked].innerHTML = "X"
+                   checkForWin();
+                   return players.player1
+              
+                } else if (
+                   players.player1.selection[i] !== undefined 
+                   && players.player2.selection[i] == undefined
+                ) {
                     players.player2.selection.push(checked);
-                    return
-               } else if (players.player1.selection[i] !== undefined 
+                    gameBoardArr[checked].innerHTML = "O"
+                    checkForWin();
+                    return players.player1
+
+                } else if (
+                    players.player1.selection[i] !== undefined 
+                    && players.player1.selection[i+1] == undefined
+                    && players.player2.selection[i] == undefined
+                ) {
+                    players.player1.selection.push(checked)
+                    gameBoardArr[checked].innerHTML = "X"
+                    checkForWin();
+                    return players.player1
+
+               } else if (
+                   players.player1.selection[i] !== undefined 
                 && players.player1.selection[i+1] !== undefined 
                 && players.player2.selection[i] == !undefined 
-                && players.player2.selection[i+1] == undefined) {
+                && players.player2.selection[i+1] == undefined
+                ) {
                     players.player2.selection.push(checked);
+                    gameBoardArr[checked].innerHTML = "O"
+                    checkForWin();
+                    return players.player1
                 }
+    
            }
 
-
-
-
-            console.log(players.player1)
-            console.log(players.player2)
-
+      
             
         }
+
+        let checkForWin = () =>{
+
+            // need to stringify values to check them.
+            // need to iterate through winning combinations in such a way that 
+            // all conbinations can be checked
+
+            // need to compare arrays where order isnt taken into account
+            // need to check if player array CONTAINS winning comb array
+
+            console.log(players.player1.selection)
+            console.log(players.player2.selection)
+
+            console.log(winningCombination[0]);
+
+            for (let i = 0; i < 7; i++) {
+
+            let winningString = winningCombination[i].toString();
+            
+            let checkPlayer1 = players.player1.selection
+            let checkPlayer2 = players.player2.selection
+            
+
+            if (winningString == checkPlayer1) {
+                console.log("Player 1 wins!")
+            } else if (winningString == checkPlayer2) {
+                console.log("Player 2 wins!")
+            }
+                
+            }
+
+
+
+        }
+
+
+
+
+
+
     return {
 
     }
