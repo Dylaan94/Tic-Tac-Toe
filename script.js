@@ -123,6 +123,8 @@ const displayController = (() => {
             // need to compare arrays where order isnt taken into account
             // need to check if player array CONTAINS winning comb array
 
+            // need to use some to check each 
+
             console.log(players.player1.selection)
             console.log(players.player2.selection)
 
@@ -130,19 +132,20 @@ const displayController = (() => {
 
             for (let i = 0; i < 7; i++) {
 
-            let winningString = winningCombination[i].toString();
+            let winningString = winningCombination[i]
             
             let checkPlayer1 = players.player1.selection
             let checkPlayer2 = players.player2.selection
-            
 
-            if (winningString == checkPlayer1) {
-                console.log("Player 1 wins!")
-            } else if (winningString == checkPlayer2) {
-                console.log("Player 2 wins!")
+            if (winningString.every(j => checkPlayer1.includes(j))) {
+                console.log("Player 1 is the winner!")
+            } else if (winningString.every(j => checkPlayer2.includes(j))) {
+                console.log("Player 2 is the winner!")
             }
+        }
+
                 
-            }
+            
 
 
 
