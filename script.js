@@ -106,8 +106,7 @@ const displayController = (() => {
                     checkForWin();
                     return players.player1
                 }
-           }
-            
+           }   
         }
 
         let checkForWin = () =>{
@@ -119,7 +118,7 @@ const displayController = (() => {
 
             console.log(winningCombination[0]);
 
-            for (let i = 0; i < 7; i++) {
+            for (let i = 0; i < 8; i++) {
 
             let checkWinningComb = winningCombination[i]
 

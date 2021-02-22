@@ -1,7 +1,3 @@
-html,body {
-    min-width: 100%;
-}
-
 body {
     background: #8ECAE6;
     font-family: 'Fredoka One', cursive;
@@ -11,9 +7,10 @@ body {
 .header {
     display: flex;
     justify-content: center;
-    background: hsl(200, 95%, 14%);
+    background: #023047;
     padding: 0.5em;
     color: white;
+
 }
 
 .container {
@@ -36,6 +33,35 @@ body {
 }
 
 .gameDisplay > .square {
-    border: black solid 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    border: black solid 3px;
     border-radius: 5px;
+}
+
+.footer {
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6em;
+}
+
+.github {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 2em;
+}
+
+.github > a {
+    color: #023047;;
+}
+
+.github > a:hover {
+    text-decoration: none;
+    color: #FB8500;
 }
