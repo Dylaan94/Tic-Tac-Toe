@@ -26,7 +26,6 @@ const gameBoard = (() => {
     }
 
     // make values available to other modules
-    // call as function ();
     return {
         getGameDisplay
     }
@@ -107,23 +106,13 @@ const displayController = (() => {
                     checkForWin();
                     return players.player1
                 }
-    
            }
-
-      
             
         }
 
         let checkForWin = () =>{
-
-            // need to stringify values to check them.
-            // need to iterate through winning combinations in such a way that 
-            // all conbinations can be checked
-
-            // need to compare arrays where order isnt taken into account
-            // need to check if player array CONTAINS winning comb array
-
-            // need to use some to check each 
+            let checkPlayer1 = players.player1.selection
+            let checkPlayer2 = players.player2.selection
 
             console.log(players.player1.selection)
             console.log(players.player2.selection)
@@ -132,35 +121,41 @@ const displayController = (() => {
 
             for (let i = 0; i < 7; i++) {
 
-            let winningString = winningCombination[i]
-            
-            let checkPlayer1 = players.player1.selection
-            let checkPlayer2 = players.player2.selection
+            let checkWinningComb = winningCombination[i]
 
-            if (winningString.every(j => checkPlayer1.includes(j))) {
-                console.log("Player 1 is the winner!")
-            } else if (winningString.every(j => checkPlayer2.includes(j))) {
-                console.log("Player 2 is the winner!")
-            }
+            // checks every item in checkWinningComb against players
+            // selection array
+
+            // have a feeling this will have a negative impact on performance?
+
+            if (checkWinningComb.every(j => checkPlayer1.includes(j))) {
+                player1Wins();
+                return 
+            } else if (checkWinningComb.every(j => checkPlayer2.includes(j))) {
+                player2Wins();
+                return
+            } 
         }
 
-                
-            
-
-
-
+        if (checkPlayer1.length === 5 && checkPlayer2.length === 4) {
+            console.log("It's a tie!")
+        }
         }
 
+        // turn this into display objects to give a pop up
 
+        let player1Wins = () => {
+            console.log(players.player1.name + " is the winner!")
+        }
 
-
-
+        let player2Wins = () => {
+            console.log(players.player2.name + " is the winner!")
+        }
 
     return {
 
     }
 })();
-
 
 
 const players = (() => {
@@ -186,9 +181,4 @@ return {
 })();
 
 
-
-const playGame = () => {
-
-
-
-}
+// create a function that allows you to choose your name
