@@ -124,15 +124,11 @@ const displayController = (() => {
             console.log(players.player1.selection)
             console.log(players.player2.selection)
 
-            console.log(winningCombination[0]);
-
             for (let i = 0; i < 8; i++) {
 
             let checkWinningComb = winningCombination[i]
 
-            // checks every item in checkWinningComb against players
-            // selection array
-
+            // checks every item in checkWinningComb against players selection arr
             // have a feeling this will have a negative impact on performance?
 
             if (checkWinningComb.every(j => checkPlayer1.includes(j))) {
@@ -144,20 +140,39 @@ const displayController = (() => {
             } 
         }
 
+        // if both arrays are full returns tie
+
         if (checkPlayer1.length === 5 && checkPlayer2.length === 4) {
             console.log("It's a tie!")
+            popup.style.display = "block";
+            winnerText.innerHTML = "It's a tie, try again!"
         }
         }
 
         // turn this into display objects to give a pop up
+        // displays winners name
 
         let player1Wins = () => {
             console.log(players.player1.name + " is the winner!")
+            popup.style.display = "block";
+            winnerText.innerHTML = players.player1.name + " is the winner!"
         }
 
         let player2Wins = () => {
             console.log(players.player2.name + " is the winner!")
+            popup.style.display = "block";
+            winnerText.innerHTML = players.player2.name + " is the winner!"
         }
+
+        // display winner on screen
+
+        let popup = document.getElementById("myModal")
+        let closeBtn = document.getElementById("close")
+        let winnerText = document.getElementById("winnerText")
+
+        closeBtn.addEventListener("click", () => {
+            popup.style.display = "none";
+        })
 
     return {
 
@@ -183,7 +198,6 @@ const setName = (() => {
         player1Name,
         player2Name,
     }
-
 })();
 
 const players = (() => {
@@ -207,7 +221,3 @@ return {
 }
 
 })();
-
-//Todo:
-// add a restart button
-// create a function that displays a pop up depending on whos the winenr
