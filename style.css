@@ -10,7 +10,7 @@ body {
     background: #023047;
     padding: 0.5em;
     color: white;
-
+    border-radius: 20px;
 }
 
 .container {
@@ -18,7 +18,28 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+}
+
+.selectionCont {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.5em;
+    padding: 0.2em;
+}
+
+.submit {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    font-family: 'Fredoka One', cursive;
+    background-color: #FB8500;
+    color: white;
+    font-size: 1em;
+    border: solid grey 0.03em;
+    border-radius: 30px;
+}
+
+.submit:hover {
+    background-color: tomato;
 }
 
 .gameDisplay {
@@ -64,4 +85,11 @@ body {
 .github > a:hover {
     text-decoration: none;
     color: #FB8500;
+}
+
+#player1Name, #player2Name {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    border-radius: 30px;
+    border: grey solid 0.03em;
 }
