@@ -17,6 +17,14 @@ const gameBoard = (() => {
         gameBoardArr.push(newDiv);
         gameDisplay.appendChild(newDiv);
     }
+
+    // resets display
+
+    let restartBtn = document.getElementById("restartBtn");
+
+    restartBtn.addEventListener("click", () => {
+        window.location.reload();
+    })
    
     console.log(gameDisplay);
     console.log(gameBoardArr);
@@ -156,6 +164,27 @@ const displayController = (() => {
     }
 })();
 
+const setName = (() => {
+    let player1Name = document.getElementById("player1Name")
+    let player2Name = document.getElementById("player2Name")
+    let submitBtn = document.getElementById("submit")
+
+    submitBtn.addEventListener("click", () => {
+        //updates names
+        players.player1.name = player1Name.value
+        players.player2.name = player2Name.value
+
+        // resets input fields 
+        player1Name.value = ""
+        player2Name.value = ""
+    })
+
+    return {
+        player1Name,
+        player2Name,
+    }
+
+})();
 
 const players = (() => {
     let player1 =  {
@@ -179,5 +208,6 @@ return {
 
 })();
 
-
-// create a function that allows you to choose your name
+//Todo:
+// add a restart button
+// create a function that displays a pop up depending on whos the winenr
