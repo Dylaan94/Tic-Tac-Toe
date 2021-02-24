@@ -10,3 +10,5 @@
 <br> <b> Things to include in future updates </b>
 <br> - Grey out the gameboard until names have been filled in
 <br> - Add AI player
+<br> - Multiple menu screens
+<br> - Scoreboard updates

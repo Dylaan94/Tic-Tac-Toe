@@ -1,7 +1,3 @@
-// module
-// if you only need one of something, use a module
-// remember to add parenthesis at the end of a module
-
 const gameBoard = (() => {
     let gameDisplay = document.getElementById("gameDisplay");
     let gameBoardArr = [];
@@ -69,7 +65,6 @@ const displayController = (() => {
             })   
         })
 
-
         let addToSelection = () => {
            console.log("add to selection launched")
            console.log(checked)
@@ -125,11 +120,9 @@ const displayController = (() => {
             console.log(players.player2.selection)
 
             for (let i = 0; i < 8; i++) {
-
             let checkWinningComb = winningCombination[i]
 
             // checks every item in checkWinningComb against players selection arr
-            // have a feeling this will have a negative impact on performance?
 
             if (checkWinningComb.every(j => checkPlayer1.includes(j))) {
                 player1Wins();
