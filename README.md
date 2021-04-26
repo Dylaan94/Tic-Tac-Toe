@@ -1,14 +1,20 @@
 # Tic-Tac-Toe
-<b>Tic-Tac-Toe for the Odin Project </b>
+# Tic-Tac-Toe for the Odin Project #
 
-<br> <b>Things I've learnt (constantly updating) </b>
-<br> - Using .every and .includes
-<br> - First project using ES6
-<br> - Added a popup that changes based on winner
-<br> - Using factory functions 
-<br>
-<br> <b> Things to include in future updates </b>
-<br> - Grey out the gameboard until names have been filled in
-<br> - Add AI player
-<br> - Multiple menu screens
-<br> - Scoreboard updates
+[Click here for live demo](https://dylaan94.github.io/Tic-Tac-Toe/)
+
+## Main Features ##
+* Add names and play!
+* Pop declares winner
+
+## Things I've learnt ##
+* How to use .every and .includes
+* How to use ES6 arrow functions
+* Added a popup that changes based on winner
+* How to use factory functions 
+
+## Things to include in future updates ##
+* Grey out the gameboard until names have been filled in
+* Add AI player
+* Multiple menu screens
+* Scoreboard updates
